@@ -19,36 +19,35 @@ export function buildUserPrompt(profile: WalletProfile, customCriteria: string):
     .join('\n');
 
   return `
-🧾 평가 대상 지갑: ${profile.address}
+Evaluation Target Wallet: ${profile.address}
 
-📍 기본 활동 지표:
-- 활동한 월 수: ${profile.active_months}
-- 총 트랜잭션 수: ${profile.tx_count}
-- 상호작용한 컨트랙트 수: ${profile.unique_contracts}
-- 브릿지 사용 이력: ${profile.bridge_tx_count}
-- 평균 거래 금액: ${profile.avg_tx_value.toFixed(4)}
-- 거래 금액 분산: ${profile.var_tx_value.toFixed(4)}
-- 함수 호출 다양성: ${profile.sig_diversity}
-- 트랜잭션 시간 분산: ${profile.tx_time_variance.toFixed(2)}
+Basic Activity Metrics:
+- Number of active months: ${profile.active_months}
+- Total number of transactions: ${profile.tx_count}
+- Number of interacted contracts: ${profile.unique_contracts}
+- Bridge usage history: ${profile.bridge_tx_count}
+- Average transaction value: ${profile.avg_tx_value.toFixed(4)}
+- Transaction value variance: ${profile.var_tx_value.toFixed(4)}
+- Function call diversity: ${profile.sig_diversity}
+- Transaction time variance: ${profile.tx_time_variance.toFixed(2)}
 
-📊 시간대별 트랜잭션 분포:
-${hourDist || '데이터 없음'}
+Transaction Distribution by Hour:
+${hourDist || 'No data'}
 
-🔢 함수별 호출 횟수:
-${fnCalls || '데이터 없음'}
+Function Call Count by Function:
+${fnCalls || 'No data'}
 
-📡 상호작용한 컨트랙트:
-${contractCalls || '데이터 없음'}
+Interacted Contracts:
+${contractCalls || 'No data'}
 
-🧬 호출 함수 시퀀스:
-${profile.tx_sequence.length > 0 ? profile.tx_sequence.join(' → ') : '시퀀스 없음'}
+Function Call Sequence:
+${profile.tx_sequence.length > 0 ? profile.tx_sequence.join(' → ') : 'No sequence'}
 
-📌 추가 중요 조건 (체인 발행자 측에서 강조한 항목):
-${customCriteria || '없음'}
+Additional Important Conditions (as emphasized by the chain issuer):
+${customCriteria || 'None'}
 
-
-→ 📊 시각화를 위해 너의 정성평가가 필요해. 
-지갑의 기본 활동 지표들과 특히 추가 중요 조건을 만족하는지에 대해서 종합적으로 평가하고 코멘트를 남겨줘.
-시빌 가능성 여부를 근거와 함께 조심스레 판단해줘. 
+→ For visualization, I need your detailed evaluation. 
+Please provide a comprehensive analysis of whether the wallet meets the basic activity metrics and especially the additional important conditions. 
+Carefully assess the potential for Sybil risk, providing reasoning for your judgment.
 `.trim();
 }
