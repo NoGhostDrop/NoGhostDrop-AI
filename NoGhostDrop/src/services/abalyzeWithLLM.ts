@@ -7,6 +7,7 @@ import { SYSTEM_PROMPT } from '../prompts/systemPrompt';
 import { buildUserPrompt } from '../prompts/userPrompt';
 import { WalletProfile } from '../types/wallet';
 
+//choices[0].message.content여기에 분석결과 들어올 것!
 type OpenAIResponse = {
   choices: {
     message: {
