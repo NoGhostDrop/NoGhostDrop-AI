@@ -49,10 +49,15 @@ export const character: Character = {
         name: 'Ghost',
         content: {
           json: {
-        "Criteria": "At least 5 transactions",
-        "Score": 80,
-        "Reason": "The wallet has 4 transactions, which is 80% of the required 5 transactions."
-        },
+            "evaluations": [
+              {
+                "Criteria": "At least 5 transactions",
+                "Score": 80,
+                "Reason": "The wallet has 4 transactions, which is 80% of the required 5 transactions."
+              }
+            ],
+            "status": false
+          },
         },
       },
       {
@@ -64,23 +69,61 @@ export const character: Character = {
       {
         name: 'Ghost',
         content: {
-          json: [{
-            "criteria": "tx_count",
-            "score": 100,
-            "Reason": "Since they made more than 5 transactions, they were awarded 100 points."
+          json: {
+            "evaluations": [
+              {
+                "criteria": "tx_count",
+                "score": 100,
+                "Reason": "Since they made more than 5 transactions, they were awarded 100 points."
+              },
+              {
+                "criteria": "unique_contracts",
+                "score": 100,
+                "Reason": "Since they interacted with more than 2 contracts, they were awarded 100 points."
+              },
+              {
+                "criteria": "tx_hour_distribution",
+                "score": 100,
+                "Reason": "The tx_hour_distribution shows activity in more than 4 time slots."
+              }
+            ],
+            "status": true
           },
-          {
-            "criteria":"unique_contracts",
-            "score":100,
-            "Reason": "Since they interacted with more than 2 contracts, they were awarded 100 points."
-          },
-          {
-            "criteria":"tx_hour_distribution",
-            "score":100,
-            "Reason": "The tx_hour_distribution shows activity in more than 4 time slots."
-          }],
         },
       },
+      {
+        name: '{{name1}}',
+        content: {
+          text: "At least 2 bridge transactions, Transaction amount greater than 0.004 ETH,Transactions called across multiple time slots",
+        },
+      },
+      {
+        name: 'Ghost',
+        content: {
+          json: {
+            "evaluations": [
+              {
+                "criteria": "At least 2 bridge transactions",
+                "score": 50,
+                "Reason": "Because there is only one bridge transaction."
+              },
+              {
+                "criteria": "Transaction amount greater than 0.004 ETH",
+                "score": 100,
+                "Reason": "Because the avg_tx_value exceeded 0.004 ETH."
+              },
+              {
+                "criteria": "tx_hour_distribution",
+                "score": 100,
+                "Reason": "Because the tx_time_variance exceeded 4 time slots"
+              }
+            ],
+            "status": false
+          }
+          ,
+        },
+      },
+
     ],
   ],
   style: {

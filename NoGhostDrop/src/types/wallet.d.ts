@@ -1,5 +1,6 @@
 export type WalletProfile = {
     address: string;
+    balance: string,
     active_months: number;
     tx_count: number;
     unique_contracts: number;

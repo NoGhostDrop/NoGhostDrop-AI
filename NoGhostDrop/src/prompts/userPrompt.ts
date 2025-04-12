@@ -60,6 +60,7 @@ Example:
 - If the condition is "active use" and it is defined as "multiple months of transactions with regular frequency":
 * Explain first: "I defined 'active use' as having a deal in another month of at least three months and at least three deals a month."
 * Then evaluate: "Wallet is active for two months with an average of four transactions per month, which we rate as a 70% fulfillment."
+* A score is assigned to each condition, and false is returned if there is even one condition that fails to exceed 100. True is returned if all conditions exceed 100.
 
 Each criterion assessment includes:
 1. your interpretation of the criteria (especially important for subjective criteria)
@@ -69,18 +70,23 @@ Each criterion assessment includes:
 
 Return is in json format,
 Example: 
-[
-  {
-    "Criteria": "At least 5 transactions",
-    "Score": 80,
-    "Reason": "4 out of 5 conditions were met."
-  },
-  {
-    "Criteria": "Active usage",
-    "Score": 70
-    "Reason": "Active usage is defined as having transactions in at least 3 months with at least 3 transactions per month, but the wallet was active for only 2 months."
-  }
-]
+{
+  "evaluations": [
+    {
+      "Criteria": "At least 5 transactions",
+      "Score": 80,
+      "Reason": "4 out of 5 conditions were met."
+    },
+    {
+      "Criteria": "Active usage",
+      "Score": 70,
+      "Reason": "Active usage is defined as having transactions in at least 3 months with at least 3 transactions per month, but the wallet was active for only 2 months."
+    }
+  ],
+  "status": false
+}
+
+
 Don't return anything except this JSON format.
 
 Provides an overall score based on the average of all criteria fulfillment rates and individual scores for each criterion.
