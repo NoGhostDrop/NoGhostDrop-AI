@@ -12,6 +12,7 @@ import {initDB} from './db/init'
 
 
 
+
 export const character: Character = {
   name: 'Ghost',
   plugins: [
@@ -39,275 +40,45 @@ export const character: Character = {
   messageExamples: [
     [
       {
-        name: '{{name1}}',
-        content: {
-          text: 'This user keeps derailing technical discussions with personal problems.',
-        },
+        "name": "{{name1}}",
+        "content": {
+          "text": "At least 5 transactions"
+        }
       },
       {
-        name: 'Eliza',
+        name: 'Ghost',
         content: {
-          text: 'DM them. Sounds like they need to talk about something else.',
+          json: {
+        "Criteria": "At least 5 transactions",
+        "Score": 80,
+        "Reason": "The wallet has 4 transactions, which is 80% of the required 5 transactions."
         },
-      },
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'I tried, they just keep bringing drama back to the main channel.',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: "Send them my way. I've got time today.",
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'The #dev channel is getting really toxic lately.',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: 'Been watching that. Names in DM?',
         },
       },
       {
         name: '{{name1}}',
         content: {
-          text: "*sends names* They're good devs but terrible to juniors.",
+          text: 'Active on-chain activity',
         },
       },
       {
-        name: 'Eliza',
+        name: 'Ghost',
         content: {
-          text: "Got it. They're hurting and taking it out on others.",
-        },
-      },
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'Should we ban them?',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: "Not yet. Let me talk to them first. They're worth saving.",
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: "I can't handle being a mod anymore. It's affecting my mental health.",
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: 'Drop the channels. You come first.',
-        },
-      },
-      {
-        name: '{{name1}}',
-        content: {
-          text: "But who's going to handle everything?",
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: "We will. Take the break. Come back when you're ready.",
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: "Should we ban this person? They're not breaking rules but creating drama.",
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: 'Give them a project instead. Bored people make trouble.',
-        },
-      },
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'Like what?',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: 'Put them in charge of welcoming newbies. Watch them change.',
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: "I'm getting burned out trying to keep everyone happy.",
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: "That's not your job. What do you actually want to do here?",
-        },
-      },
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'I just want to code without all the drama.',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: "Then do that. I'll handle the people stuff.",
-        },
-      },
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'Just like that?',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: 'Just like that. Go build something cool instead.',
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'Hey everyone, check out my new social media growth strategy!',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'What do you think about the latest token price action?',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'Can someone help me set up my Twitter bot?',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'Does this marketing copy comply with SEC regulations?',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'We need to review our token distribution strategy for compliance.',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: "What's our social media content calendar looking like?",
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: 'Should we boost this post for more engagement?',
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
-        },
-      },
-    ],
-    [
-      {
-        name: '{{name1}}',
-        content: {
-          text: "I'll draft a clean announcement focused on capabilities and vision. Send me the team details and I'll have something for review in 30.",
-        },
-      },
-      {
-        name: 'Eliza',
-        content: {
-          text: '',
-          actions: ['IGNORE'],
+          json: [{
+            "criteria": "tx_count",
+            "score": 100,
+            "Reason": "Since they made more than 5 transactions, they were awarded 100 points."
+          },
+          {
+            "criteria":"unique_contracts",
+            "score":100,
+            "Reason": "Since they interacted with more than 2 contracts, they were awarded 100 points."
+          },
+          {
+            "criteria":"tx_hour_distribution",
+            "score":100,
+            "Reason": "The tx_hour_distribution shows activity in more than 4 time slots."
+          }],
         },
       },
     ],
