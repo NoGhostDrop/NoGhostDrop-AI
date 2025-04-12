@@ -26,22 +26,20 @@ interface TxWithTimestamp extends ethers.providers.TransactionResponse {
 const app = express();
 app.use(express.json()); // JSON 요청을 파싱하기 위한 미들웨어
 
-// 지갑 주소를 받는 API 엔드포인트
-app.post('/analyze-wallet', async (req: Request, res: Response) => {
-    const { walletAddress } = req.body; // 요청의 body에서 지갑 주소 추출
-    
-    if (!walletAddress) {
-      return res.status(400).json({ error: "지갑 주소가 필요합니다." });
-    }
-  
-    try {
+ export async function analyzeWallet(walletAddress: string) {
+  if (!walletAddress) {
+      throw new Error("지갑 주소가 필요합니다.");
+  }
+
+  try {
       const result = await collectWalletData(walletAddress);
-      return res.json(result); // 분석 결과를 클라이언트에 반환
-    } catch (error) {
+      return result; // 분석 결과를 반환
+  } catch (error) {
       console.error("지갑 분석 중 오류:", error);
-      return res.status(500).json({ error: "지갑 분석 중 오류가 발생했습니다." });
-    }
-  });
+      throw new Error("지갑 분석 중 오류가 발생했습니다.");
+  }
+}
+
 
 // collectWalletData 함수 수정
 async function collectWalletData(walletAddress: string) {
@@ -156,8 +154,3 @@ async function collectWalletData(walletAddress: string) {
   return result;
 }
 
-// 서버 포트 설정
-const port = 3000;
-app.listen(port, () => {
-  console.log(`서버가 ${port}번 포트에서 시작되었습니다.`);
-});
