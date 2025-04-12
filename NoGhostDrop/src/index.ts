@@ -328,7 +328,7 @@ export const character: Character = {
 };
 
 const initCharacter = async ({ runtime }: { runtime: IAgentRuntime }) => {
-  await initDB();
+  await initDB(); //db 테이블 생성
   logger.info('Initializing character');
   logger.info('Name: ', character.name);
 };

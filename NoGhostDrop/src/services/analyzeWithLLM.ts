@@ -7,6 +7,7 @@ import { SYSTEM_PROMPT } from '../prompts/systemPrompt';
 import { buildUserPrompt } from '../prompts/userPrompt';
 import { WalletProfile } from '../types/wallet';
 
+
 //choices[0].message.content여기에 분석결과 들어올 것!
 type OpenAIResponse = {
   choices: {
@@ -17,9 +18,9 @@ type OpenAIResponse = {
 };
 
 export async function analyzeWithLLM(profile: WalletProfile, customCriteria: string): Promise<string> {
-  const userPrompt = buildUserPrompt(profile, customCriteria);
+  const USER_PROMPT = buildUserPrompt(profile, customCriteria);
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  const response = await fetch(process.env.OPENAI_API_BASE_URL, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -29,7 +30,7 @@ export async function analyzeWithLLM(profile: WalletProfile, customCriteria: str
       model: 'gpt-4',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: userPrompt },
+        { role: 'user', content: USER_PROMPT },
       ],
     }),
   });
