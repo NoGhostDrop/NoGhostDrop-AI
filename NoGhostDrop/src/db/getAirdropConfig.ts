@@ -1,4 +1,5 @@
 // src/db/getAirdropConfigByToken.ts
+
 import { sql } from '@elizaos/plugin-sql';
 import { AirdropConfig } from './schema/airdrop';
 
