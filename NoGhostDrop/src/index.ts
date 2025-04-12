@@ -8,9 +8,16 @@ import {
 import dotenv from 'dotenv';
 import starterPlugin from './plugin';
 import { SYSTEM_PROMPT } from './prompts/systemPrompt';
-import {initDB} from './db/init'
+import {initDB} from './db/init';
+import express from 'express';
+import router from './flows/routes';
 
-
+const app = express();
+app.use(express.json());
+app.use(router); 
+app.listen(3000, () => {
+  console.log('🚀 Server listening on http://localhost:3000');
+});
 
 export const character: Character = {
   name: 'Ghost',

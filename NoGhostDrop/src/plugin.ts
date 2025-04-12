@@ -15,9 +15,9 @@ import {
 } from '@elizaos/core';
 import { z } from 'zod';
 import starterTestSuite from './tests';
-import { receiveReportAction } from './flows/recieverReportFlow';
+import { runWalletReport } from './flows/recieverReportFlow';
 import { airdropDeployAction } from './flows/airdropDeployFlow';
-import { claimAndSendAction } from './flows/claimAndSend';
+
 
 /**
  * Define the configuration schema for the plugin with the following properties:

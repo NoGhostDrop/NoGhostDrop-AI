@@ -1,7 +1,7 @@
 import express from 'express';
 import { runWalletClaim } from './recieverClaimFlow';
 import { runWalletReport } from './recieverReportFlow';
-import { runAirdropDeploy } from '../flows/airdropDeployFlow';
+import { registerAirdrop } from '../services/registerAirdrop';
 
 const router = express.Router();
 
@@ -46,7 +46,7 @@ router.post('/issuer/deploy', async (req, res) => {
     try {
       const input = req.body; // 토큰 주소, 조건 등등
   
-      const deployResult = await runAirdropDeploy(input); // input: AirdropRegistrationInput 타입이어야 함
+      const deployResult = await registerAirdrop(input);; // input: AirdropRegistrationInput 타입이어야 함
       return res.json({ deployResult });
     } catch (err) {
       console.error('❌ /issuer/deploy error:', err);
