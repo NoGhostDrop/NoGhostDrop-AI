@@ -15,9 +15,6 @@ import {
 } from '@elizaos/core';
 import { z } from 'zod';
 import starterTestSuite from './tests';
-import { runWalletReport } from './flows/recieverReportFlow';
-import { airdropDeployAction } from './flows/airdropDeployFlow';
-
 
 /**
  * Define the configuration schema for the plugin with the following properties:
@@ -261,7 +258,7 @@ const plugin: Plugin = {
     ],
   },
   services: [StarterService],
-  actions: [helloWorldAction, receiveReportAction, airdropDeployAction, claimAndSendAction],
+  actions: [helloWorldAction],
   providers: [helloWorldProvider],
 };
 

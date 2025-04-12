@@ -38,7 +38,7 @@ export async function analyzeWithLLM(profile: WalletProfile, customCriteria: str
   // ✅ 타입 단언 추가!
   const data = await response.json() as OpenAIResponse;
 
-  return data.choices?.[0]?.message?.content || '분석 결과를 가져오지 못했습니다.';
+  return data.choices?.[0]?.message?.content || '분석 결과를 가져오지 못했습니다.';//응답은 json 형태일것. 
 }
 
 
