@@ -2,7 +2,7 @@
 // 받고자 하는 토큰의 정보(DB에서 가져오기)
 // 잘 합쳐서 ‘이 토큰은 이런 조건을 만족해야하는데, 이 지갑이 만족하는지 분석해줘!’라는 역할의 프롬프트 생성
 
-//아래는 예시
+
 import type { WalletProfile } from '../types/wallet';
 
 export function buildUserPrompt(profile: WalletProfile, customCriteria: string): string {
@@ -46,6 +46,9 @@ ${profile.tx_sequence.length > 0 ? profile.tx_sequence.join(' → ') : '시퀀�
 📌 추가 중요 조건 (체인 발행자 측에서 강조한 항목):
 ${customCriteria || '없음'}
 
-→ 위 내용을 종합하여, 001~008 조건 기준으로 평가하고, 시빌 가능성 여부를 분석해줘.
+
+→ 📊 시각화를 위해 너의 정성평가가 필요해. 
+지갑의 기본 활동 지표들과 특히 추가 중요 조건을 만족하는지에 대해서 종합적으로 평가하고 코멘트를 남겨줘.
+시빌 가능성 여부를 근거와 함께 조심스레 판단해줘. 
 `.trim();
 }
