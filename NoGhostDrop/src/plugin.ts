@@ -15,11 +15,15 @@ import {
 } from '@elizaos/core';
 import { z } from 'zod';
 import starterTestSuite from './tests';
+import { receiveReportAction } from './flows/recieverReportFlow';
+import { airdropDeployAction } from './flows/airdropDeployFlow';
+import { claimAndSendAction } from './flows/claimAndSend';
 
 /**
  * Define the configuration schema for the plugin with the following properties:
  *
  * @param {string} EXAMPLE_PLUGIN_VARIABLE - The name of the plugin (min length of 1, optional)
+ * @param {string} OPENAI_API_KEY - OpenAI API key for using OpenAI models
  * @returns {object} - The configured schema object
  */
 const configSchema = z.object({
@@ -30,6 +34,16 @@ const configSchema = z.object({
     .transform((val) => {
       if (!val) {
         console.warn('Warning: Example plugin variable is not provided');
+      }
+      return val;
+    }),
+  OPENAI_API_KEY: z
+    .string()
+    .min(1, 'OpenAI API key is not provided')
+    .optional()
+    .transform((val) => {
+      if (!val) {
+        console.warn('Warning: OpenAI API key is not provided');
       }
       return val;
     }),
@@ -162,6 +176,7 @@ const plugin: Plugin = {
   description: 'A starter plugin for Eliza',
   config: {
     EXAMPLE_PLUGIN_VARIABLE: process.env.EXAMPLE_PLUGIN_VARIABLE,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
   async init(config: Record<string, string>) {
     logger.info('*** Initializing starter plugin ***');
@@ -246,7 +261,7 @@ const plugin: Plugin = {
     ],
   },
   services: [StarterService],
-  actions: [helloWorldAction],
+  actions: [helloWorldAction, receiveReportAction, airdropDeployAction, claimAndSendAction],
   providers: [helloWorldProvider],
 };
 
